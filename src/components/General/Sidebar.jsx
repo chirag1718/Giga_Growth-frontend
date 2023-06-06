@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const navigate = useNavigate()
+  const handleSignIn = (e)=>{
+    e.preventDefault()
+    navigate("/login")
+    setShowSidebar(false)
+  }
   return (
     <>
       {showSidebar ? (
@@ -28,14 +35,14 @@ const Sidebar = () => {
       )}
 
       <div
-        className={` flex items-start justify-center  top-0 right-0 w-[200px] md:w-[25vw] bg-rose-600 p-10  text-white fixed h-full z-40  ease-in-out duration-300  shadow-md  ${
+        className={` flex items-start justify-center  top-0 right-0 w-[200px] md:w-[25vw] bg-rose-600 p-8  text-white fixed h-full z-40  ease-in-out duration-300  shadow-md  ${
           showSidebar ? "translate-x-0 " : "translate-x-full"
         }`}
       >
         <div className="mt-10 flex flex-col items-center justify-center gap-5 text-2xl">
           {!window.location.pathname.includes("/dashboard") && (
             <div className="flex items-center gap-5 cursor-pointer active:scale-95">
-              <span>Login</span>
+              <span onClick={handleSignIn}>Sign In</span>
               <LoginIcon />
             </div>
           )}
