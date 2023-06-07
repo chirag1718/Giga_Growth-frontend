@@ -49,7 +49,7 @@ const Email = () => {
           className="flex font-poppins text-sm md:text-base cursor-pointer border-2 rounded-md p-2 border-rose-600 bg-rose-500 text-white hover:text-black hover:bg-white active:scale-95 transition-all duration-200 ease-in-out"
           onClick={handleSidebar}
         >
-          Send Message
+          Send Email
         </div>
       )}
       <div className="">
