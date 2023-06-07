@@ -4,13 +4,15 @@ import { Routes, Route } from "react-router-dom";
 // local imports
 import SignIn from "../components/Auth/SignIn";
 import Dashboard from "../components/Dashboard/Dashboard";
-
+import { UserAuth } from "../context/AuthContext";
 const AppRoutes = () => {
+  const { user } = UserAuth();
   return (
-    <Routes>
-      <Route exact path="/" element={<SignIn />} />
-      <Route exact path="/dashboard" element={<Dashboard />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={user ? <Dashboard /> : <SignIn />} />
+      </Routes>
+    </>
   );
 };
 
