@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className="flex flex-col justify-center items-center">
       <div className="my-10 ">
         <div className="text-center text-lg mb-2">
-          <span>Stock: Relaince Industries 🚀</span>
+          <span>Stock: Reliance Industries Limited 🚀</span>
         </div>
         <div className="border-[1px] border-gray-300 rounded-lg w-[250px] h-[300px] sm:w-[300px]  shadow-sm">
           {selectedData && (
