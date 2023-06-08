@@ -55,11 +55,11 @@ const Email = () => {
       <div className="">
         <div
           // w-[200px] md:w-[25vw]
-          className={`top-0 right-0  bg-rose-600 w-full md:w-[30vw] h-full p-10 pl-10 text-white fixed  z-40 transition-all duration-200 ease-in-out overflow-hidden ${
+          className={`top-0 right-0 bg-rose-600 w-full md:w-[40vw] h-full px-5 pt-10 text-white fixed z-40 transition-all duration-200 ease-in-out  ${
             showSidebar ? "translate-x-0 " : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex flex-col justify-center items-center overflow-hidden">
             <form
               // ref={form}
               className="flex flex-col justify-center items-center mt-10 gap-10"
@@ -69,32 +69,34 @@ const Email = () => {
                 onChange={(e) => setFulltName(e.target.value)}
                 type="text"
                 placeholder="Full Name"
-                className=" outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[300px] font-montserrat "
+                className="placeholder:text-black outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[250px] font-montserrat"
               />
               <input
                 value={emailTo}
                 onChange={(e) => setEmailTo(e.target.value)}
                 type="text"
-                placeholder="Email to"
-                className=" outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[300px] font-montserrat "
+                placeholder="To"
+                className="placeholder:text-black outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[250px] font-montserrat "
               />
+
               <input
+                id="From"
                 value={emailFrom}
                 onChange={(e) => setEmailFrom(e.target.value)}
                 type="text"
-                placeholder="Email from"
-                className=" outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[300px] font-montserrat "
+                placeholder="From"
+                className="placeholder:text-black outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[250px] font-montserrat "
               />
               <input
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 type="text"
                 placeholder="Message"
-                className=" outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[300px] font-montserrat "
+                className="placeholder:text-black outline-none border-b-[2px] border-black rounded-lg p-3 text-black md:w-[250px] font-montserrat "
               />
             </form>
             <button
-              className="active:scale-95 p-3 rounded-md font-montserrats"
+              className="active:scale-95 p-3 rounded-md font-montserrats mt-5 text-lg"
               onClick={handleEmail}
             >
               Send
