@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import GigaApi from "../../apis/GigaApi";
 const Email = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [fullName, setFulltName] = useState("");
   const [emailTo, setEmailTo] = useState("");
   const [emailFrom, setEmailFrom] = useState("");
@@ -9,9 +11,9 @@ const Email = () => {
   const handleSidebar = () => {
     setShowSidebar(true);
   };
-  const handleEmail = (e) => {
+  const handleEmail = async (e) => {
     e.preventDefault();
-
+    // send email 👇🏻
     try {
       const templateParams = {
         from_name: fullName,
@@ -25,15 +27,28 @@ const Email = () => {
         templateParams,
         "-UP8avTCSYZlCo9lu"
       );
-      // TODO add email to mongo db
-      setEmailTo("");
-      setEmailFrom("");
-      setFulltName("");
-      setMessage("");
-      setShowSidebar(!showSidebar);
     } catch (err) {
       console.log(err);
     }
+
+    // save email message to db 👇🏻
+    try {
+      const response = await GigaApi.post("/dashboard/message", {
+        fullName: fullName,
+        emailTo: emailTo,
+        emailFrom: emailFrom,
+        message: message,
+      });
+    } catch (err) {
+      console.log(err, "email message err");
+    }
+
+    // set state to an empty string
+    setEmailTo("");
+    setEmailFrom("");
+    setFulltName("");
+    setMessage("");
+    setShowSidebar(!showSidebar);
   };
   return (
     <>
